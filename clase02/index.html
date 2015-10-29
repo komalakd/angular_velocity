@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html ng-app="gemStore">
+<head>
+    <title>gemStore</title>
+    <style type="text/css">
+        .red { color: red; }
+        .blue { color: blue; }
+        .red-border { border: 1px solid red }
+    </style>
+</head>
+<body ng-controller="StoreController as store">
+    
+    <!--  -->
+    <!-- Directivas que se ejecutan en la misma clase -->
+
+    <h1>{{ 'Clase#2 !' }}</h1>
+
+    <div ng-class="['red-border', { red: store.isRed, blue: !store.isRed }]">
+        <span>Coloreando...</span>
+    </div>
+
+    {{store.alumnos|json}}
+
+    <div ng-repeat="alumno in (store.alumnos | filter: store.noASD as myFilteredCollection) | orderBy:'nombre' | limitTo:3 track by $index"> <!-- puede agregarse el orden -->
+        {{$index}}
+        {{$even}}
+        {{$odd}}
+        {{alumno.nombre | uppercase}}
+    </div>
+
+    <div>Total de alumnos: {{myFilteredCollection}}</div> <!-- FIXME: filter filter -->
+
+    <!-- podemos recorrer un hash de la siguiente manera -->
+    <div ng-repeat="(dni,alumno) in store.alumnos">
+        {{dni + ': ' alumno.apellido, alumno.nombre}}
+    </div>
+
+    <ul>
+        <li>{{ store.valor | number }}</li>
+        <li>{{ store.valor | currency }}</li> <!-- pesos -->
+        <li>{{ store.valor | currency:'u$s' }}</li> <!-- con parametros! -->
+        <li>{{ (store.valor | number )+ ' ' + store.moneda }}</li> <!-- el tipo de moneda podriamos definirlo en el controller -->
+        <li>{{ (store.fecha | date:'dd/MM/yy' ) }}</li>
+        <li>{{ 'QwErTy' | case:'upper':' *' }}</li>
+        <li>{{ 'QwErTy' | case:'lower':'!!!' }}</li>
+        <li>{{ 'QwErTy' | case:'':'' }}</li>
+    </ul>
+
+    <input type="checkbox" ng-checked="store.mostrarFecha"/>
+    <div ng-if="store.mostrarFecha">
+        FECHA!
+    </div>
+
+    <!-- FIXME: completar -->
+    <div ng-switch on="expression"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="gemStore.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+inyeccion de dependecias -> modularizable y testeable
+podemos inyectar servicios en servicios
+
+las inyecciones no se testean en los test unitarios
+
+function es la unica que define un scope en js
+
+TODO: descargar ejercicios resueltos
+
+------------------------------------------------
+directivas del core de angular
+
+ng-cloak -> no muestra los tags con este atributo hasta que angular los procese
+contra -> no ves nada hasta que angular proceso toda la pagina
+recomendacion -> usarlo en los elementos cercanos de las expresiones.
+
+ng-bind -> no se muestran las {{}} ya que escribimos expresiones angular dentro de la directiva
+
+ng-src -> para evitar los 404 de los sources {{asd}}
+
+ng-href -> lo mismo pero para links
+
+generico -> ng-attr-*
+
+filtro de espera: angular soporta if inline
+ctrl.prop ? ctrl.prop.asd : 'cargando...'
+ctrl.prop.asd || 'cargando...'
+
+descargar -> angular-locale_es-ar.js
+se debe incluir inmediatamente despues de angular
+
+
+ng-if & ng-switch -> crean un scope nuevo
+
+ng-repeat no permite que haya duplicados (se debe usar track by al final del filtro)
+
+angular to array filter -> descargar
