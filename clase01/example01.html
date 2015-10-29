@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html ng-app="example">  <!-- le debemos pasar el nombre del modulo -->
+<head>
+    <title>Example</title>
+</head>
+<body>
+    {{ "hola curso!" }} <!--funciona mientras este contenido en el ng-app. aca se ejecutan expresiones angular, no codigo js! --> 
+    <!-- js tiene muchos errores de referencia (para variables globales y funciones ), angular nos perdona -->
+    <!-- el unico bloque que soporta es el inline -->
+    <!-- las variables globales se definen en el contexto window -->
+    <!-- las expresiones angular se ejecutan dentro de un scope -->
+    <!-- no se acepta el operador coma ni el voy -->
+    <!-- soporta filtros, pipes -->
+    <!--  -->
+    {{ "entrada" | filtro1 | filtro2 }} <!-- se aplican los dos filtros y devuelven un resultados -->
+    <!-- tambien podemos realizar algunas expresiones -->
+    {{ 1 + 2 }}
+    <script type="text/javascript" src=""></script>
+
+
+    <!-- alias para la instancia de este controller -->
+    <!-- crea la propiedad myCtrl en el scope! -->
+    <div ng-controller="MyController as myCtrl"> 
+        {{ saludo }} <!-- esta expresion se ejecuta en el scope del controller -->
+        
+        <!-- bindea el valor del input con el valor de la propiedad saludo del controller de la app -->
+        <input type="text" ng-model="modelo.saludo" />
+        
+        <!-- definimos el handler en el html, muy expresivo -->
+        <!-- extendemos la directiva para pasarle el evento al metodo del controller-->
+        <button ng-click="myCtrl.switch($event)">Switch!</button>
+
+        <!-- si quiero acceder a las propiedades del padre uso "as myCtrl" -->
+        <div ng-controller="MySecondController as mySecond"> 
+            <input type="text" ng-model="modelo.saludo" />
+
+        </div>
+
+        <!-- el elemento esta siempre, solo agrega la clase ng-hide -->
+        <div ng-show="myCtrl.saludo == 'hola'">
+            {{ myCtrl.saludo + 'mundo' }}
+        </div>
+
+        <div ng-hide="myCtrl.saludo != 'hola'">
+            {{ myCtrl.saludo + 'mundo' }}
+        </div>
+
+        <!-- loops -->
+        <div ng-repeat="alumno in myCtrl.alumnos">
+            {{ alumno.nombre }}
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>

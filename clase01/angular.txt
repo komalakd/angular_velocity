@@ -1,0 +1,36 @@
+ventajas
+* resuelve la mayoria de los problemas a la hora de desarrollar
+* robusto
+* rapido si nos mantenemos en los lineamientos del framework
+* modularizable ?
+* soporta plugins (muchas tb desarrolladas x google)
+* unnobstrusive (js no separado de css)
+  * logica de presentacion en el js
+  * logica de maquetacion en el css
+  * mantiene un equilibrio entre que el codigo sea LEGIBLE y EXPRESIVO
+
+* extiende html
+  * mas completa, casi similar a web component (nuevo paradigma)
+  * dom live (actualizaciones constantes)
+
+* extiende js
+  * no se ejecuta js interpretado. las expresiones angular tienen diferencias con el js tradicional.
+
+* two-way data binding
+* model-view view-model: actualizaciones automaticas entre el model y la vista. la magia la hace de manera transparente para nosotros.
+
+* facil de testear!
+  * todos los componentes soportan inyeccion de dependencias.
+  * testeo de manera individual
+
+
+
+desventajas
+* relaciones con componentes realizados anterior a angular (integraciones)
+  * librerias repetidas en angular para q no sea dificil integrar
+
+
+wifi psswd:
+c0d1ngl1v3$
+
+plataforma alumni -> enviar email.
