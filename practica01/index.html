@@ -7,9 +7,20 @@
     <h1>{{ 'Welcome to gemStore !' }}</h1>
     <h3>{{ store.gem.name }} <em>{{ store.gem.price }}</em> </h3>
 
-    <button ng-canPurchase></button>
+    <div ng-show="store.gem.canPurchase">
+        <button type="button">Add to cart #1!</button>
+    </div>
+
+    <div ng-class="{ product : store.gem.canPurchase }">
+        <button type="button">Add to cart #2!</button>
+    </div>
+
+    <div class="product_row" ng-repeat="gem in store.gems">
+        {{ gem.name }}
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script type="text/javascript" src="gemStore.js"></script>
+    <link rel="stylesheet" type="text/css" href="gemStore.css">
 </body>
 </html>
