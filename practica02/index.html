@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html ng-app="gemStore">
+<head>
+    <title>gemStore</title>
+</head>
+<body ng-controller="StoreController as store">
+    
+    <h1>{{ 'Welcome to gemStore !' }}</h1>
+    
+    <div ng-repeat="gem in store.gems" ng-hide="gem.soldOut">
+        <h3>{{ gem.name }} <em>{{ gem.price | currency }}</em> </h3>
+        <div ng-show="gem.canPurchasex">
+            <button type="button">Add to cart!</button>
+        </div>
+        <div ng-if="gem.imgs.length">
+            <h4>Showing {{gem.name}} gallery</h4>
+            <div ng-repeat="img in gem.imgs">
+                <img ng-src="{{img}}">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="gemStore.js"></script>
+</body>
+</html>
