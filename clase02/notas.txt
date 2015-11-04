@@ -12,6 +12,7 @@ directivas del core de angular
 
 ng-cloak -> no muestra los tags con este atributo hasta que angular los procese
 contra -> no ves nada hasta que angular proceso toda la pagina
+       -> angular.js debe cargarse antes del html, si no sigue mostrando las expresiones angular {{}}
 recomendacion -> usarlo en los elementos cercanos de las expresiones.
 
 ng-bind -> no se muestran las {{}} ya que escribimos expresiones angular dentro de la directiva
