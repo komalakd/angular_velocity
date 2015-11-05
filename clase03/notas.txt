@@ -1,0 +1,64 @@
+Notas Clase#2 - Forms
+
+<!-- el formulario genera un scope, agrega una propiedad al scope llamada name -->
+<!-- agrego el novalidate para escapar a la validacion de los browsers -->
+
+declaro un input dentro de un form -> se genera un scope input dentro del scope form
+
+atributos del ejemplo:
+ng-required
+ng-pattern
+ng-minlength
+ng-maxlength
+ng-trim
+
+ng-show="myForm.input.$submitted && myForm.input.$invalid"
+
+Podemos ver todas las propiedades del form asi:
+<pre>
+{{myForm|json}}
+</pre>
+
+los errores se declaran en: myForm.$error.$ERROR_TYPE
+
+siempre usar ng-model para relacionar los valores del html con las propiedades del controller.
+
+<input type="checkbox" ng-true-value="chequeado!" ng-false-value"no chequeado!" />
+
+tener ciudado cuando seteo una propiedad bindeada a un select, debe de ser un valor contemplado, si no angular lo agrega al select!
+O: crear una option con value=""
+
+<selectng-options="option.name for option in data.options track by option id"></select>
+<selectng-options="option.id as option.name for option in data.options track by option id" group by data.group></select>
+
+ng-model="myForm.valor" bg-model-options="{updateOn: 'blur'}"
+ng-model="myForm.valor" bg-model-options="{updateOn: 'blur keyup'}"
+ng-model="myForm.valor" bg-model-options="{debaunce: 1000}"
+ng-model="myForm.valor" bg-model-options="{debaunce: { Object } }"
+
+rollbackViewValue -> cancelar la actualizacion en curso
+
+ng-click="myForm.valor.$rollbackViewValue()"
+
+ng-model-options="{ getterSetter: true }" -> para evitar digest cycles innecesarios
+
+ng-submit="submit(); myForm.$setPristine(); myForm.$setUntouched()"
+
+
+CUSTOM VALIDATIONS
+
+DIFICIL ->crear directivas.
+
+// retorno
+return {
+	require: 'ngModel' // la uso en un elemento html que tenga ng-model
+	link: function( $scope, elem, attrs, controller ){
+		ctrl.$validators.integer = function( modelValue, viewValue ){
+
+		}
+	}
+}
+
+FACIL -> bajar ui-validate
+instalar con bower
+habilita las directivas ui-validate & ui-validate-async

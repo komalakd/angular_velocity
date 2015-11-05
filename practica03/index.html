@@ -1,0 +1,63 @@
+<!DOCTYPE>
+<html ng-app="gemStore">
+<head>
+    <title>gemStore</title>
+    <style type="text/css">
+        .active { color: red; }
+        .first_img { height: 100px; width: 100px; }
+        .gallery_img { height: 50px; width: 50px; }
+    </style>
+</head>
+<body ng-controller="StoreController as store">
+    
+    <h1>{{ 'Welcome to gemStore !' }}</h1>
+    
+    <div ng-repeat="gem in store.gems" ng-hide="gem.soldOut">
+        <h3>{{ gem.name }} <em>{{ gem.price | currency }}</em> </h3>
+        <div ng-show="gem.canPurchase">
+            <button type="button">Add to cart!</button>
+        </div>
+        
+        <section ng-controller="TabController as tabController" class="tabController">
+            <li>
+                <div ng-click="tabController.setTab(1)">Description</div>
+                <div ng-show="tabController.isSet(1)">{{gem.description}}</div>
+            </li>
+            <li>
+                <div ng-click="tabController.setTab(2)">Shine</div>
+                <div ng-show="tabController.isSet(2)">{{gem.shine}}</div>
+            </li>
+            <div ng-if="gem.imgs.length" ng-controller="GalleryController as galleryController">
+                <li>
+                    <div ng-click="tabController.setTab(3)">Gallery</div>
+
+                    <div ng-show="tabController.isSet(3)">
+                        <div>
+                            <img class="first_img" ng-src="{{gem.imgs[galleryController.current]}}" />
+                        </div>
+                        <div>
+                            <img ng-repeat="img in gem.imgs" class="gallery_img" ng-src="{{img}}" ng-click="galleryController.setCurrent($index)">
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <li>
+                <div ng-click="tabController.setTab(4)">Reviews</div>
+                <div ng-show="tabController.isSet(4)">
+                    <div ng-if="gem.reviews.length" ng-controller="ReviewController as reviewController">
+                        <div ng-repeat="review in gem.reviews">
+                            <div>{{review.stars}} stars!</div>
+                            <div>{{review.body}}</div>
+                            <div>{{review.author}}</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </section>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="gemStore.js"></script>
+</body>
+</html>
