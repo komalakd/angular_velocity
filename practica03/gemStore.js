@@ -86,14 +86,18 @@ function GalleryController(){
 function ReviewController(){
     var vm = this;
 
-    vm.stars = [
-        [ '', 'Select..!' ],
-        [ 1, 'One star' ],
-        [ 2, 'Two stars' ],
-        [ 3, 'Three stars' ],
-        [ 4, 'Four stars' ],
-        [ 5, 'Five stars' ]
-    ];
+    vm.review = {};
 
-    vm.stars_selected = '';
+    vm.reset = function(product){
+        vm.review = {};
+    }
+
+    vm.addReview = function(gem){
+        console.log('addReview');
+        vm.review.createdOn = Date.now();
+        gem.reviews.push(vm.review);
+        this.reset();
+        return true;
+    }
+
 }
