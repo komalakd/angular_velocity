@@ -2,13 +2,18 @@
 <html ng-app="gemStore">
 <head>
     <title>gemStore</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="gemStore.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <style type="text/css">
         .active { color: red; }
         .first_img { height: 100px; width: 100px; }
         .gallery_img { height: 50px; width: 50px; }
+        .btn-danger { color: red; }
+        .ng-invalid.ng-dirty { background-color: red; }
     </style>
 </head>
-<body ng-controller="StoreController as store">
+<body ng-controller="StoreController as store" ng-cloak>
     
     <h1>{{ 'Welcome to gemStore !' }}</h1>
     
@@ -19,7 +24,7 @@
         </div>
         
         <section ng-controller="TabController as tabController" class="tabController">
-            <ul>
+            <ul class="list-inline">
                 <li ng-click="tabController.setTab(1)">Description</li>
                 <li ng-click="tabController.setTab(2)">Shine</li>
                 <li ng-click="tabController.setTab(3)">Gallery</li>
@@ -40,6 +45,7 @@
                     <div>{{review.stars}} stars!</div>
                     <div>{{review.body}}</div>
                     <div>{{review.author}}</div>
+                    <div>{{review.createdOn | date: 'dd/MM/yy'}}</div>
                 </div>
                 <blockquote class="blockquote-reverse">
                     <strong>{{reviewController.review.stars}} Stars</strong>
@@ -70,7 +76,5 @@
         </section>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script type="text/javascript" src="gemStore.js"></script>
 </body>
 </html>

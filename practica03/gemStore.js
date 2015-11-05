@@ -23,12 +23,14 @@ function StoreController(){
                 {
                     author: 'andresvalle.isi@gmail.com',
                     body: 'Review#1',
-                    stars: 5
+                    stars: 5,
+                    createdOn: 1234567890123
                 },
                 {
                     author: 'pcorrenti@gmail.com',
                     body: 'Review#2',
-                    stars: 2
+                    stars: 2,
+                    createdOn: 1234567890123
                 }
             ]
         },
