@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<html ng-app="app">
+<head>
+    <title>app</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <style type="text/css">
+        
+    </style>
+</head>
+<body ng-controller="MyController as myController"ng-cloak>
+
+    <div hello-world nombre="{{persona.nombre}}" submit="procesarSaludo(name)">
+                
+    </div>
+    <div hello-world nombre="{{::persona.nombre}}"> <!-- one way data binding -->
+
+    </div>
+
+</body>
+</html>

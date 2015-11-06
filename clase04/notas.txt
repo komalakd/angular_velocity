@@ -1,0 +1,9 @@
+parsers -> bindea la vista al model
+$ctr.$parsers.integer.push( function customParser( viewValue ){
+	return modelValue / 10;
+});
+
+formatter -> bindea el model a la vista
+$ctr.$formatters.integer.push( function customFormat( modelValue ){
+	return modelValue * 10;
+});
