@@ -1,11 +1,13 @@
 angular
     .module("gemStore",[])
     .controller("StoreController", StoreController )
-    .directive("productTabs", productTabs )
     .controller("GalleryController", GalleryController )
     .controller("ReviewController", ReviewController )
+    .directive("productTabs", productTabs )
     .directive("productDescription", productDescription )
     .directive("productSpecs", productSpecs )
+    .directive("productReviews", productReviews )
+    .directive("productGallery", productGallery )
     ;
 
 function productDescription() {
@@ -26,6 +28,15 @@ function productReviews() {
     return {
         restrict: 'E',
         templateUrl: 'product_reviews.html'
+    };
+}
+
+function productGallery() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product_gallery.html',
+        controller: GalleryController,
+        controllerAs: 'galleryController'
     };
 }
 

@@ -8,15 +8,7 @@
     <div ng-show="tab.isSet(1)"></div>
     <product-description></product-description>
     <product-specs></product-specs>
-    <div ng-if="gem.imgs.length" ng-show="tab.isSet(3)" ng-controller="GalleryController as galleryController">
-        <div>
-            <img class="first_img" ng-src="{{gem.imgs[galleryController.current]}}" />
-        </div>
-        <div>
-            <img ng-repeat="img in gem.imgs" class="gallery_img" ng-src="{{img}}" ng-click="galleryController.setCurrent($index)"/>
-        </div>
-    </div>
-    
+    <product-gallery></product-gallery>
     <product-reviews></product-reviews>
     
 </section>
