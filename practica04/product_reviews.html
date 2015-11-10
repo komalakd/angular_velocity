@@ -1,0 +1,33 @@
+<div ng-controller="ReviewController as reviewController" ng-show="tabController.isSet(4)">
+    <div ng-repeat="review in gem.reviews">
+        <div>{{review.stars}} stars!</div>
+        <div>{{review.body}}</div>
+        <div>{{review.author}}</div>
+        <div>{{review.createdOn | date: 'dd/MM/yy'}}</div>
+    </div>
+    <blockquote class="blockquote-reverse">
+        <strong>{{reviewController.review.stars}} Stars</strong>
+        {{reviewController.review.body}}<br/>
+        <footer>
+            <cite>{{reviewController.review.author}}</cite>
+        </footer>
+    </blockquote>
+    <form name="reviewForm" ng-submit="reviewForm.$valid && reviewController.addReview(gem) && reviewForm.$setPristine()" novalidate>
+        <fieldset class="form-group" ng-class="{'has-error': reviewForm.rStars.$dirty && reviewForm.rStars.$invalid}">
+            <select name="rStars" ng-model="reviewController.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+                <option value="">Rate the Product</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea name="rBody" ng-model="reviewController.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+        </fieldset>
+        <fieldset class="form-group" ng-class="{'has-error': reviewForm.rAuthor.$dirty && reviewForm.rAuthor.$invalid}">
+            <input name="rAuthor" ng-model="reviewController.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required />
+        </fieldset>
+        <fieldset class="form-group">
+            <input type="submit" class="btn pull-right" ng-class="reviewForm.$dirty && reviewForm.$invalid ? 'btn-danger' : 'btn-primary'" value="Submit Review" />
+        </fieldset>
+    </form>
+    {{reviewForm|json}}
+    {{reviewController|json}}
+</div>

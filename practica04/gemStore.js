@@ -3,7 +3,31 @@ angular
     .controller("StoreController", StoreController )
     .controller("TabController", TabController )
     .controller("GalleryController", GalleryController )
-    .controller("ReviewController", ReviewController );
+    .controller("ReviewController", ReviewController )
+    .directive("productDescription", productDescription )
+    .directive("productSpecs", productSpecs )
+    ;
+
+function productDescription() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product_description.html'
+    };
+}
+
+function productSpecs() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product_specs.html'
+    };
+}
+
+function productReviews() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product_reviews.html'
+    };
+}
 
 function StoreController(){
     var vm = this;
