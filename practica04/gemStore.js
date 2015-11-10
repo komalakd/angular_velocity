@@ -1,7 +1,7 @@
 angular
     .module("gemStore",[])
     .controller("StoreController", StoreController )
-    .controller("TabController", TabController )
+    .directive("productTabs", productTabs )
     .controller("GalleryController", GalleryController )
     .controller("ReviewController", ReviewController )
     .directive("productDescription", productDescription )
@@ -79,6 +79,15 @@ function StoreController(){
             reviews: []
         }
     ];
+}
+
+function productTabs() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product_tabs.html',
+        controller: TabController,
+        controllerAs: 'tab'
+    }; 
 }
 
 function TabController(){

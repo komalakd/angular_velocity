@@ -1,0 +1,22 @@
+<section class="tabController">
+    <ul class="list-inline">
+        <li ng-click="tab.setTab(1)">Description</li>
+        <li ng-click="tab.setTab(2)">Specs</li>
+        <li ng-click="tab.setTab(3)">Gallery</li>
+        <li ng-click="tab.setTab(4)">Reviews</li>
+    </ul>
+    <div ng-show="tab.isSet(1)"></div>
+    <product-description></product-description>
+    <product-specs></product-specs>
+    <div ng-if="gem.imgs.length" ng-show="tab.isSet(3)" ng-controller="GalleryController as galleryController">
+        <div>
+            <img class="first_img" ng-src="{{gem.imgs[galleryController.current]}}" />
+        </div>
+        <div>
+            <img ng-repeat="img in gem.imgs" class="gallery_img" ng-src="{{img}}" ng-click="galleryController.setCurrent($index)"/>
+        </div>
+    </div>
+    
+    <product-reviews></product-reviews>
+    
+</section>

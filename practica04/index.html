@@ -2,7 +2,7 @@
 <html ng-app="gemStore">
 <head>
     <title>gemStore</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
     <script type="text/javascript" src="gemStore.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <style type="text/css">
@@ -23,28 +23,8 @@
             <button type="button">Add to cart!</button>
         </div>
         
-        <section ng-controller="TabController as tabController" class="tabController">
-            <ul class="list-inline">
-                <li ng-click="tabController.setTab(1)">Description</li>
-                <li ng-click="tabController.setTab(2)">Specs</li>
-                <li ng-click="tabController.setTab(3)">Gallery</li>
-                <li ng-click="tabController.setTab(4)">Reviews</li>
-            </ul>
-            <div ng-show="tabController.isSet(1)"></div>
-            <product-description></product-description>
-            <product-specs></product-specs>
-            <div ng-if="gem.imgs.length" ng-show="tabController.isSet(3)" ng-controller="GalleryController as galleryController">
-                <div>
-                    <img class="first_img" ng-src="{{gem.imgs[galleryController.current]}}" />
-                </div>
-                <div>
-                    <img ng-repeat="img in gem.imgs" class="gallery_img" ng-src="{{img}}" ng-click="galleryController.setCurrent($index)">
-                </div>
-            </div>
-            
-            <product-reviews></product-reviews>
-            
-        </section>
+        <product-tabs></product-tabs>
+
     </div>
 
 </body>
