@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html ng-app="gemStore" ng-strict-di>
+<head>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<body class="container" ng-controller="StoreController as store">
+    <header>
+        <h1 class="text-center">Flatlander Crafted Gems</h1>
+        <h2 class="text-center">– an Angular store –</h2>
+    </header>
+    <main class="row">
+        <div class="col-md-offset-3 col-md-6" ng-cloak>
+            <div class="product row" ng-repeat="product in store.products" ng-hide="product.soldOut">
+                <h3>
+                    {{product.name}}
+                    <em class="pull-right">{{product.price | currency}}</em>
+                </h3>
+                <button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
+                
+                <product-gallery></product-gallery>
+                
+                <product-tabs></product-tabs>
+                
+            </div>
+        </div>
+    </main>
+    
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-i18n/angular-locale_es-ar.js"></script>
+    <!-- inject:js -->
+    <!-- endinject -->
+    
+</body>
+</html>
